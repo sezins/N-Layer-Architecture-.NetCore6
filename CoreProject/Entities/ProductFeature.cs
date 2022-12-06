@@ -8,7 +8,7 @@ namespace CoreProject.Entities
 {
     public class ProductFeature
     {
-        public Guid Id { get; set; }
+        public int Id { get; set; }
         public string? Color { get; set; }
         public int Height { get; set; }
         public int Width { get; set; }

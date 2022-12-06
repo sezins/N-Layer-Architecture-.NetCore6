@@ -8,8 +8,9 @@ namespace CoreProject.Entities
 {
     public abstract class BaseEntity
     {
-        public Guid Id { get; set; }
-        public DateTime UpdatedDate { get; set; }
+        public int Id { get; set; }
+        //ılk seferde nullable olacak
+        public DateTime? UpdatedDate { get; set; }
         public DateTime CreatedDate { get; set; }
     }
 }

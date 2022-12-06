@@ -21,8 +21,7 @@ namespace Repository.DbContext
         public DbSet<ProductFeature> ProductFeatures  { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder) 
         {
-            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
-            
+            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());            
             //model olusurken calısacak olan metod
             base.OnModelCreating(modelBuilder);
         }
