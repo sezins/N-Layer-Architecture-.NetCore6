@@ -16,10 +16,10 @@ namespace CoreProject.IRepository
         //Sorgular dırek verıtabanına gıtmez.Performans arttırmak ıcın queryable kullanılırz.productrepository.where(x=>x.id>5).ToListAsync(); productrepository.where(x=>x.id>5) buraya kadar dbye gıtmez bundan sonrası gıder
         IQueryable<T> Where(Expression<Func<T,bool>> expression);
         Task<bool> AnyAsync(Expression<Func<T,bool>> expression);
-        Task<T> AddAsync(T entity);
+        Task AddAsync(T entity);
         //AddRangeAsync =bırden fazla kayıt yapabılırız.
         //Interface ve abstract larla (soyut ogelerle calısmak onemlı) sebeı ıse newlemeye gerek kalmaz.
-        Task<T> AddRangeAsync(IEnumerable<T> entites);
+        Task AddRangeAsync(IEnumerable<T> entites);
         void Update(T entity);
         //Update ve Remobe efcore tarafıonda async yok 
         void Remove(T entity);  
