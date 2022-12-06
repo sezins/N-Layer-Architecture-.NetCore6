@@ -23,7 +23,7 @@ namespace Repository.DbContext
         {
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
             
-            //model olusurken calısacak olan metod
+            //model olusurken calısacak olan metod///
             base.OnModelCreating(modelBuilder);
         }
 
