@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Repository.Seed
 {
-    internal class Class1
+    public class CategorySeed
     {
+
     }
 }
