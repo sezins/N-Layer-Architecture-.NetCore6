@@ -22,7 +22,7 @@ namespace Repository.DbContext
         protected override void OnModelCreating(ModelBuilder modelBuilder) 
         {
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
-            //devam
+            
             //model olusurken calısacak olan metod
             base.OnModelCreating(modelBuilder);
         }
