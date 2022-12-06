@@ -21,7 +21,7 @@ namespace Repository.Seed
             new Product
             {Id=2,CategoryId=1, Name = "Pencil2", Price =200,Stock=30,CreatedDate=DateTime.Now,UpdatedDate=DateTime.Now},
             new Product
-            { Id = 3, CategoryId =2, Name = "Books", Price = 200, Stock = 30, CreatedDate = DateTime.Now, UpdatedDate = DateTime.Now },);
+            { Id = 3, CategoryId =2, Name = "Books", Price = 200, Stock = 30, CreatedDate = DateTime.Now, UpdatedDate = DateTime.Now });
         }
     }
 }

@@ -21,7 +21,7 @@ namespace CoreProject.IRepository
         //Interface ve abstract larla (soyut ogelerle calısmak onemlı) sebeı ıse newlemeye gerek kalmaz.
         Task AddRangeAsync(IEnumerable<T> entites);
         void Update(T entity);
-        //Update ve Remobe efcore tarafıonda async yok 
+        //Update ve Remobe efcore tarafıonda async yok
         void Remove(T entity);  
         void RemoveRange(IEnumerable<T> entites);
     }

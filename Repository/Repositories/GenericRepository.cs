@@ -1,6 +1,6 @@
 ﻿using CoreProject.IRepository;
 using Microsoft.EntityFrameworkCore;
-using Repository.DbContext;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,58 +12,60 @@ namespace Repository.Repositories
 {
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
-        protected readonly AppDbContext _context;
+        protected readonly DbContext _context;
         private readonly DbSet<T> _dbSet;
 
-        public GenericRepository(AppDbContext context)
+        public GenericRepository(DbContext context)
         {
             _context = context;
             _dbSet =context.Set<T>();
         }
-
+        //gerıyebırsey donmeyecegı ıcın async yazarız
         public async Task AddAsync(T entity)
         {
-            throw new NotImplementedException();
+            await  _dbSet.AddAsync(entity);
+            _context.SaveChanges(); 
         }
 
         public async Task AddRangeAsync(IEnumerable<T> entites)
         {
-            throw new NotImplementedException();
+            await _dbSet.AddRangeAsync(entites);
         }
 
         public async Task<bool> AnyAsync(Expression<Func<T, bool>> expression)
         {
-            throw new NotImplementedException();
+            return await _dbSet.AnyAsync(expression);
         }
-
+        //Efcore aldıgı dataları  memorye cekmesın. performans arttırmak ıcın gereklı.Dastayı alma ıslemı oldugu ıcın asnotrackıng dedıgımız ıcın 
+        //daha verımlı olmasını saglarız.
         public IQueryable<T> GetAll(Expression<Func<T, bool>> expression)
         {
-            throw new NotImplementedException();
+            return _dbSet.AsNoTracking().AsQueryable();
         }
-
+        
         public async Task<T> GetByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            return await _dbSet.FindAsync(id);
         }
 
-        public async void Remove(T entity)
+        public  void Remove(T entity)
         {
-            throw new NotImplementedException();
+            _dbSet.Remove(entity);
         }
 
-        public async void RemoveRange(IEnumerable<T> entites)
+        public  void RemoveRange(IEnumerable<T> entites)
         {
-            throw new NotImplementedException();
+            _dbSet.RemoveRange(entites);
         }
 
-        public async void Update(T entity)
+        public  void Update(T entity)
         {
-            throw new NotImplementedException();
+            _dbSet.Update(entity);
         }
 
-        public async IQueryable<T> Where(Expression<Func<T, bool>> expression)
+        public IQueryable<T> Where(Expression<Func<T, bool>> expression)
         {
-            throw new NotImplementedException();
+            return _dbSet.Where(expression);
         }
     }
 }
