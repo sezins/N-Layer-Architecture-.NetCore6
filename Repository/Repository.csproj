@@ -19,8 +19,4 @@
     <ProjectReference Include="..\CoreProject\CoreProject.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Seed\" />
-  </ItemGroup>
-
 </Project>
