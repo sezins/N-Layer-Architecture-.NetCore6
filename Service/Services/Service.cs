@@ -28,9 +28,9 @@ namespace Service.Services
             return entity;
         }
 
-        public Task<T> AddRangeAsync(IEnumerable<T> entites)
+        public async Task<T> AddRangeAsync(IEnumerable<T> entites)
         {
-            throw new NotImplementedException();
+            await 
         }
 
         public Task<bool> AnyAsync(Expression<Func<T, bool>> expression)
