@@ -1,6 +1,6 @@
 ﻿using CoreProject.IRepository;
 using Microsoft.EntityFrameworkCore;
-
+using Repository.Context;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,19 +12,17 @@ namespace Repository.Repositories
 {
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
-        protected readonly DbContext _context;
+        protected readonly AppDbContext _context;
         private readonly DbSet<T> _dbSet;
-
-        public GenericRepository(DbContext context)
+        public GenericRepository(AppDbContext context)
         {
             _context = context;
-            _dbSet =context.Set<T>();
+            _dbSet = context.Set<T>();
         }
-        //gerıyebırsey donmeyecegı ıcın async yazarız
+
         public async Task AddAsync(T entity)
         {
-            await  _dbSet.AddAsync(entity);
-            _context.SaveChanges(); 
+            await _dbSet.AddAsync(entity);
         }
 
         public async Task AddRangeAsync(IEnumerable<T> entites)
@@ -36,29 +34,28 @@ namespace Repository.Repositories
         {
             return await _dbSet.AnyAsync(expression);
         }
-        //Efcore aldıgı dataları  memorye cekmesın. performans arttırmak ıcın gereklı.Dastayı alma ıslemı oldugu ıcın asnotrackıng dedıgımız ıcın 
-        //daha verımlı olmasını saglarız.
-        public IQueryable<T> GetAll(Expression<Func<T, bool>> expression)
+
+        public IQueryable<T> GetAll()
         {
             return _dbSet.AsNoTracking().AsQueryable();
         }
-        
+
         public async Task<T> GetByIdAsync(int id)
         {
             return await _dbSet.FindAsync(id);
         }
 
-        public  void Remove(T entity)
+        public void Remove(T entity)
         {
             _dbSet.Remove(entity);
         }
 
-        public  void RemoveRange(IEnumerable<T> entites)
+        public void RemoveRange(IEnumerable<T> entites)
         {
             _dbSet.RemoveRange(entites);
         }
 
-        public  void Update(T entity)
+        public void Update(T entity)
         {
             _dbSet.Update(entity);
         }

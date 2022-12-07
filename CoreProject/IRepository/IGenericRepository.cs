@@ -12,7 +12,7 @@ namespace CoreProject.IRepository
         //Asenkron data dön.
         Task<T> GetByIdAsync(int id);
         //productRepository.getall(x=>x.id>5).tolist();
-        IQueryable<T> GetAll(Expression<Func<T, bool>> expression);
+        IQueryable<T> GetAll();
         //Sorgular dırek verıtabanına gıtmez.Performans arttırmak ıcın queryable kullanılırz.productrepository.where(x=>x.id>5).ToListAsync(); productrepository.where(x=>x.id>5) buraya kadar dbye gıtmez bundan sonrası gıder
         IQueryable<T> Where(Expression<Func<T,bool>> expression);
         Task<bool> AnyAsync(Expression<Func<T,bool>> expression);
