@@ -9,6 +9,7 @@ namespace CoreProject.IRepository
 {
     public interface IGenericRepository<T> where T : class
     {
+        //Ortak querylervar
         //Asenkron data dön.
         Task<T> GetByIdAsync(int id);
         //productRepository.getall(x=>x.id>5).tolist();
