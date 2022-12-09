@@ -22,9 +22,12 @@ namespace Service.Services
             _productRepository = productRepository;
         }
 
-        public async Task<List<ProductWithCategoryDto>> GetProductsWithCategory()
+        public async Task<CustomResponseDto<List<ProductWithCategoryDto>>> GetProductsWithCategory()
         {
-            var product = await _productRepository.GetProductWithCategory();
+            var products = await _productRepository.GetProductWithCategory();
+
+            var productsDto = _mapper.Map<List<ProductWithCategoryDto>>(products);
+            return CustomResponseDto<List<ProductWithCategoryDto>>.Success(200,productsDto);
         }
     }
 }

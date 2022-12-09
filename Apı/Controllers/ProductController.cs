@@ -4,6 +4,7 @@ using CoreProject.Entities;
 using CoreProject.IService;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
+using Service.Services;
 
 namespace API.Controllers
 {
@@ -13,22 +14,32 @@ namespace API.Controllers
     {
         private readonly IMapper _mapper;
         private readonly IService<Product> _service;
-        public ProductController(IService<Product> service, IMapper mapper)
+        private readonly IProductService _productService;
+        public ProductController(IService<Product> service, IMapper mapper, IProductService productService)
         {
             _service = service;
             _mapper = mapper;
+            _productService = productService;
         }
+
+        //www.mysite.com/api/products/GetProductsWithCategory
+        [HttpGet("[action]")]
+        public async Task<IActionResult> GetProductsWithCategory()
+        {
+            return CreateActionResult(await _productService.GetProductsWithCategory());
+        }
+
         //www.mysite.com/api/products
         [HttpGet]
         public async Task<IActionResult> All()
         {
             var products = await _service.GetAllAsync();
-
             var productsDto = _mapper.Map<List<ProductDto>>(products.ToList());
             //return Ok(CustomResponseDto<List<ProductDto>>.Success(200, productsDto));
             return CreateActionResult(CustomResponseDto<List<ProductDto>>.Success(200, productsDto));
 
         }
+
         //www.mysite.com/api/products/5
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)

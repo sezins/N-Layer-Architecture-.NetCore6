@@ -22,8 +22,10 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IUnitofWork, UnitOfWork>();
 builder.Services.AddScoped(typeof(IGenericRepository<>),typeof(GenericRepository<>));
 builder.Services.AddScoped(typeof(IService<>),typeof(Service<>));
-
 builder.Services.AddAutoMapper(typeof(MapPofile));
+
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddScoped<IProductService, ProductService>();
 
 builder.Services.AddDbContext<AppDbContext>(x =>
 {
