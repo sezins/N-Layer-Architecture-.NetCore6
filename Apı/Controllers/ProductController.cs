@@ -8,8 +8,7 @@ using Service.Services;
 
 namespace API.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
+    
     public class ProductController : CostomBaseController
     {
         private readonly IMapper _mapper;

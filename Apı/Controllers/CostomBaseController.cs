@@ -3,7 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {
-    
+    [Route("api/[controller]")]
+    [ApiController]
     public class CostomBaseController : ControllerBase
     {
         //Endpoınt degıldır.Apı bunu endpoınt olarak algılamamsı ıcın yapılmıtrı.
