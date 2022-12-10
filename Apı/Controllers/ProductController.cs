@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using API.Filter;
+using AutoMapper;
 using CoreProject.Dto;
 using CoreProject.Entities;
 using CoreProject.IService;
@@ -8,7 +9,7 @@ using Service.Services;
 
 namespace API.Controllers
 {
-    
+    [ValidateFilterAttribute]
     public class ProductController : CostomBaseController
     {
         private readonly IMapper _mapper;

@@ -1,11 +1,13 @@
-﻿using CoreProject.IRepository;
+﻿using API.Filter;
+using CoreProject.IRepository;
 using CoreProject.IService;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 
 namespace API.Controllers
-{    
+{
+    [ValidateFilterAttribute]
     public class CategoryController : CostomBaseController
     {
         private readonly ICategoryService _categoryService;
